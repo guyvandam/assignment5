@@ -9,7 +9,7 @@ import biuoop.DrawSurface;
 import biuoop.GUI;
 import biuoop.Sleeper;
 
-import java.awt.Color;
+import java.awt.*;
 
 /**
  * @author Guy Vandam 325133148 <guyvandam@gmail.com>
@@ -113,6 +113,14 @@ public class Game {
      */
     public void addSprite(Sprite s) {
         this.getSprites().addSprite(s);
+    }
+
+    public void removeCollidable(Collidable c) {
+        this.getEnvironment().removeCollidable(c);
+    }
+
+    public void removeSprite(Sprite s) {
+        this.getSprites().removeSprite(s);
     }
 
     /**

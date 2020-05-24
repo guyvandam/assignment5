@@ -2,6 +2,7 @@
   <dictionary name="GuyVandam">
     <words>
       <w>collidable</w>
+      <w>collidables</w>
     </words>
   </dictionary>
 </component>

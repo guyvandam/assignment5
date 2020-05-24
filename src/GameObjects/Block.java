@@ -4,10 +4,11 @@ import GeometryShapes.Line;
 import GeometryShapes.Point;
 import GeometryShapes.Rectangle;
 import Interfaces.Collidable;
+import Interfaces.HitListener;
 import Interfaces.Sprite;
 import biuoop.DrawSurface;
 
-import java.awt.Color;
+import java.awt.*;
 
 /**
  * @author Guy Vandam 325133148 <guyvandam@gmail.com>
@@ -91,6 +92,13 @@ public class Block implements Collidable, Sprite {
         if (g != null) {
             g.addCollidable(this);
             g.addSprite(this);
+        }
+    }
+
+    public void removeFromGame(Game g) {
+        if (g != null) {
+            g.removeCollidable(this);
+            g.removeSprite(this);
         }
     }
 }

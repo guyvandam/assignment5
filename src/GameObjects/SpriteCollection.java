@@ -31,6 +31,10 @@ public class SpriteCollection {
         this.sprites.add(s);
     }
 
+    public void removeSprite(Sprite s) {
+        this.sprites.remove(s);
+    }
+
     /**
      * @return a ArrayList object. the Interfaces.Sprite ArrayList.
      */

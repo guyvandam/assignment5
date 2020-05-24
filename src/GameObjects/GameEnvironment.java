@@ -32,6 +32,10 @@ public class GameEnvironment {
         this.collidables.add(c);
     }
 
+    public void removeCollidable(Collidable c) {
+        this.collidables.remove(c);
+    }
+
     /**
      * @return an Java-ArrayList object.
      */
