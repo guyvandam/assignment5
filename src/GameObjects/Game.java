@@ -4,7 +4,10 @@ import GeometryShapes.Ball;
 import GeometryShapes.Point;
 import GeometryShapes.Rectangle;
 import Interfaces.Collidable;
+import Interfaces.HitListener;
+import Interfaces.HitNotifier;
 import Interfaces.Sprite;
+import OutputClasses.PrintingHitListener;
 import biuoop.DrawSurface;
 import biuoop.GUI;
 import biuoop.Sleeper;
@@ -19,10 +22,12 @@ import java.awt.*;
 public class Game {
     private SpriteCollection sprites;
     private GameEnvironment environment;
+    private Counter counter; // the number of blocks in the game.
     private GUI gui;
     private int guiWidth;
     private int guiHeight;
     private int widthORHeight = 20;
+
 
     /**
      * constractur function.
@@ -35,6 +40,7 @@ public class Game {
         this.environment = new GameEnvironment();
         this.guiWidth = guiWidth;
         this.guiHeight = guiHeight;
+        this.counter = new Counter();
     }
 
     /**
@@ -97,6 +103,10 @@ public class Game {
         return environment;
     }
 
+    public Counter getCounter() {
+        return counter;
+    }
+
     /**
      * adds the input Interfaces.Collidable to the Interfaces.Collidable list of the GameObjects.GameEnvironment object.
      *
@@ -131,9 +141,12 @@ public class Game {
         this.addBorderBlocks();
         this.addBalls();
         this.addPaddle();
-        this.addBlocks();
-    }
 
+//        PrintingHitListener printingHL = new PrintingHitListener();
+//        BlockRemover blockRemover = new BlockRemover(this);
+//        this.addBlocks(blockRemover);
+
+    }
     /**
      * adds a blue rectangle to the screen to use as a blue background.
      *
@@ -149,7 +162,7 @@ public class Game {
     /**
      * adds the colored blocks to the GameObjects.Game, with the same pattern of the example in the task page.
      */
-    public void addBlocks() {
+    public void addBlocks(HitListener hitListener) {
         java.awt.Color[] colors = {Color.gray, Color.red, Color.yellow, Color.cyan, Color.pink, Color.green};
 
         int blockWidth = 50, blockHeight = 20;
@@ -162,9 +175,11 @@ public class Game {
                 Block temp = new Block(new Rectangle(new Point(startX, startY), blockWidth, blockHeight),
                         colors[rowCounter]);
                 temp.addToGame(this);
+                temp.addHitListener(hitListener);
                 startX += blockWidth;
                 columnCounter++;
             }
+            this.counter.increase(columnCounter);
             startY += blockHeight;
             numOfColumns--;
             startX = this.getGuiWidth() - numOfColumns * blockWidth - this.getWidthORHeight() - 1;

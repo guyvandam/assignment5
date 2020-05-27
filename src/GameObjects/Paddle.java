@@ -1,5 +1,6 @@
 package GameObjects;
 
+import GeometryShapes.Ball;
 import GeometryShapes.Line;
 import GeometryShapes.Point;
 import GeometryShapes.Rectangle;
@@ -149,7 +150,7 @@ public class Paddle implements Sprite, Collidable {
     }
 
     @Override
-    public Velocity hit(Point collisionPoint, Velocity currentVelocity) {
+    public Velocity hit(Ball hitter, Point collisionPoint, Velocity currentVelocity) {
         if (collisionPoint == null || currentVelocity == null) {
             return null;
         }

@@ -249,7 +249,7 @@ public class Ball implements Sprite {
                             - this.getVelocity().getDy() / 2));
                 }
                 Collidable c = closestCollision.collisionObject();
-                this.setVelocity(c.hit(closestCollision.collisionPoint(), this.getVelocity()));
+                this.setVelocity(c.hit(this, closestCollision.collisionPoint(), this.getVelocity()));
             }
         }
     }

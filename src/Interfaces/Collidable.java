@@ -1,5 +1,6 @@
 package Interfaces;
 import GameObjects.Velocity;
+import GeometryShapes.Ball;
 import GeometryShapes.Point;
 import GeometryShapes.Rectangle;
 
@@ -26,5 +27,5 @@ public interface Collidable {
      * @return a GameObjects.Velocity object. the expected GameObjects.Velocity after the impact.
      */
 
-    Velocity hit(Point collisionPoint, Velocity currentVelocity);
+    Velocity hit(Ball hitter, Point collisionPoint, Velocity currentVelocity);
 }
