@@ -8,7 +8,7 @@ import Interfaces.Collidable;
 import Interfaces.Sprite;
 import biuoop.DrawSurface;
 
-import java.awt.Color;
+import java.awt.*;
 
 /**
  * @author Guy Vandam 325133148 <guyvandam@gmail.com>
@@ -67,6 +67,7 @@ public class Ball implements Sprite {
         this.color = color;
     }
 
+
     /**
      * @return a GeometryShapes.Point object, the center point of the ball.
      */
@@ -75,17 +76,19 @@ public class Ball implements Sprite {
     }
 
     /**
+     * sets the input point to be the ball's center point.
+     *
+     * @param newCenter a GeometryShapes.Point object.
+     */
+    public void setCenter(Point newCenter) {
+        this.center = newCenter;
+    }
+
+    /**
      * @return a GameObjects.GameEnvironment Object, the ball's game environment.
      */
     public GameEnvironment getGameEnvironment() {
         return gameEnvironment;
-    }
-
-    /**
-     * @return int. the x value of the center point.
-     */
-    public int getX() {
-        return (int) (this.center.getX());
     }
 
     /**
@@ -98,12 +101,10 @@ public class Ball implements Sprite {
     }
 
     /**
-     * sets the input point to be the ball's center point.
-     *
-     * @param newCenter a GeometryShapes.Point object.
+     * @return int. the x value of the center point.
      */
-    public void setCenter(Point newCenter) {
-        this.center = newCenter;
+    public int getX() {
+        return (int) (this.center.getX());
     }
 
     /**
@@ -149,17 +150,6 @@ public class Ball implements Sprite {
     /**
      * sets the velocity of the ball to the input velocity.
      *
-     * @param velocity a velocity object. the desired velocity.
-     */
-    public void setVelocity(Velocity velocity) {
-        if (velocity != null) {
-            this.v = velocity;
-        }
-    }
-
-    /**
-     * sets the velocity of the ball to the input velocity.
-     *
      * @param dx a double. the dx of the desired velocity.
      * @param dy a double. the dx of the desired velocity.
      */
@@ -172,6 +162,17 @@ public class Ball implements Sprite {
      */
     public Velocity getVelocity() {
         return this.v;
+    }
+
+    /**
+     * sets the velocity of the ball to the input velocity.
+     *
+     * @param velocity a velocity object. the desired velocity.
+     */
+    public void setVelocity(Velocity velocity) {
+        if (velocity != null) {
+            this.v = velocity;
+        }
     }
 
     /**
@@ -262,6 +263,12 @@ public class Ball implements Sprite {
     public void addToGame(Game g) {
         if (g != null) {
             g.addSprite(this);
+        }
+    }
+
+    public void removeFromGame(Game g) {
+        if (g != null) {
+            g.removeSprite(this);
         }
     }
 }

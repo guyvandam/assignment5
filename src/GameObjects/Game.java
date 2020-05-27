@@ -1,13 +1,13 @@
 package GameObjects;
 
+import GameObjects.ObjectRemovers.BallRemover;
+import GameObjects.ObjectRemovers.BlockRemover;
 import GeometryShapes.Ball;
 import GeometryShapes.Point;
 import GeometryShapes.Rectangle;
 import Interfaces.Collidable;
 import Interfaces.HitListener;
-import Interfaces.HitNotifier;
 import Interfaces.Sprite;
-import OutputClasses.PrintingHitListener;
 import biuoop.DrawSurface;
 import biuoop.GUI;
 import biuoop.Sleeper;
@@ -22,8 +22,10 @@ import java.awt.*;
 public class Game {
     private SpriteCollection sprites;
     private GameEnvironment environment;
-    private Counter counter; // the number of blocks in the game.
+    private Counter remainingBlocks; // the number of blocks in the game.
+    private Counter remainingBalls; // the number of balls in the game.
     private GUI gui;
+
     private int guiWidth;
     private int guiHeight;
     private int widthORHeight = 20;
@@ -40,7 +42,8 @@ public class Game {
         this.environment = new GameEnvironment();
         this.guiWidth = guiWidth;
         this.guiHeight = guiHeight;
-        this.counter = new Counter();
+        this.remainingBlocks = new Counter();
+        this.remainingBalls = new Counter();
     }
 
     /**
@@ -103,8 +106,12 @@ public class Game {
         return environment;
     }
 
-    public Counter getCounter() {
-        return counter;
+    public Counter getRemainingBlocks() {
+        return remainingBlocks;
+    }
+
+    public Counter getRemainingBalls() {
+        return remainingBalls;
     }
 
     /**
@@ -138,15 +145,16 @@ public class Game {
      */
     public void initialize() {
         this.setGui(new GUI("title", getGuiWidth(), getGuiHeight()));
-        this.addBorderBlocks();
+
+        BlockRemover blockRemover = new BlockRemover(this, this.getRemainingBlocks());
+        BallRemover ballRemover = new BallRemover(this, this.getRemainingBalls());
+        this.addBorderBlocks(ballRemover);
         this.addBalls();
         this.addPaddle();
-
-//        PrintingHitListener printingHL = new PrintingHitListener();
-//        BlockRemover blockRemover = new BlockRemover(this);
-//        this.addBlocks(blockRemover);
+        this.addBlocks(blockRemover);
 
     }
+
     /**
      * adds a blue rectangle to the screen to use as a blue background.
      *
@@ -164,6 +172,7 @@ public class Game {
      */
     public void addBlocks(HitListener hitListener) {
         java.awt.Color[] colors = {Color.gray, Color.red, Color.yellow, Color.cyan, Color.pink, Color.green};
+//        java.awt.Color[] colors = {Color.gray, Color.red, Color.yellow};
 
         int blockWidth = 50, blockHeight = 20;
         int numOfRows = colors.length, numOfColumns = 12;
@@ -179,7 +188,7 @@ public class Game {
                 startX += blockWidth;
                 columnCounter++;
             }
-            this.counter.increase(columnCounter);
+            this.remainingBlocks.increase(columnCounter);
             startY += blockHeight;
             numOfColumns--;
             startX = this.getGuiWidth() - numOfColumns * blockWidth - this.getWidthORHeight() - 1;
@@ -205,30 +214,49 @@ public class Game {
      * adds 2 balls to the game.
      */
     public void addBalls() {
-        int ballSize = 3, dx = 4, dy = 4;
+        int ballSize = 3, dx = 4, dy = 4, numOfBalls = 3;
         java.awt.Color ballColor = Color.BLACK;
+        Point startPoint = new Point(this.getWidthORHeight() * 4, this.getWidthORHeight() *4);
 
-        // randomly picked start points so they wont look uniform.
-        Ball b1 = new Ball(new Point(this.getWidthORHeight() * 2, this.getWidthORHeight() * 2), ballSize, ballColor,
-                new Velocity(dx, dy), this.getEnvironment());
-        Ball b2 = new Ball(new Point(this.getWidthORHeight() + this.getGuiWidth() / 3,
-                this.getWidthORHeight() * 3), ballSize,
-                ballColor, new Velocity(dx, dy), this.getEnvironment());
+        Ball[] balls = {new Ball(startPoint, ballSize, ballColor), new Ball(startPoint, ballSize, ballColor),
+                new Ball(startPoint, ballSize, ballColor)};
 
-        b1.addToGame(this);
-        b2.addToGame(this);
+        balls[0].setVelocity(dx,dy);
+        balls[1].setVelocity(-dx,-dy);
+        balls[2].setVelocity(dx,-dy);
+
+        for(Ball b: balls){
+            b.addToGame(this);
+            b.setGameEnvironment(this.getEnvironment());
+        }
+
+        this.getRemainingBalls().increase(numOfBalls);
+
+
+//        // randomly picked start points so they wont look uniform.
+//        Ball b1 = new Ball(new Point(this.getWidthORHeight() * 2, this.getWidthORHeight() * 2), ballSize, ballColor,
+//                new Velocity(dx, dy), this.getEnvironment());
+//        Ball b2 = new Ball(new Point(this.getWidthORHeight() + this.getGuiWidth() / 3,
+//                this.getWidthORHeight() * 3), ballSize,
+//                ballColor, new Velocity(dx, dy), this.getEnvironment());
+//
+//        b1.addToGame(this);
+//        b2.addToGame(this);
     }
 
     /**
      * adds the border blocks to the game.
      */
-    public void addBorderBlocks() {
+    public void addBorderBlocks(HitListener ballRemover) {
         java.awt.Color blockColor = Color.gray;
         Block upper = new Block(new Rectangle(new Point(0, 0), this.getGuiWidth(), this.getWidthORHeight()),
                 blockColor);
         Block lower = new Block(new Rectangle(new Point(this.getWidthORHeight(), this.getGuiHeight()
                 - this.getWidthORHeight()),
                 this.getGuiWidth() - 2 * this.getWidthORHeight(), this.getWidthORHeight()), blockColor);
+
+        lower.addHitListener(ballRemover); //turns the lower/bottom block into the 'death block'
+
         Block left = new Block(new Rectangle(new Point(0, this.getWidthORHeight()), this.getWidthORHeight(),
                 this.getGuiWidth()
                         - 2 * this.getWidthORHeight()), blockColor);
@@ -266,6 +294,11 @@ public class Game {
             long milliSecondLeftToSleep = millisecondsPerFrame - usedTime;
             if (milliSecondLeftToSleep > 0) {
                 sleeper.sleepFor(milliSecondLeftToSleep);
+            }
+
+            if (this.getRemainingBlocks().getValue() == 0 || this.getRemainingBalls().getValue() == 0) {
+                this.getGui().close();
+                return;
             }
         }
     }

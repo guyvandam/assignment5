@@ -39,14 +39,15 @@ public class SpriteCollection {
      * @return a ArrayList object. the Interfaces.Sprite ArrayList.
      */
     public List<Sprite> getSprites() {
-        return sprites;
+        return this.sprites;
     }
 
     /**
      * calls the 'timePassed' function for all the Sprites in the list.
      */
     public void notifyAllTimePassed() {
-        for (Sprite s : this.getSprites()) {
+        List<Sprite> copy = new ArrayList<>(this.getSprites());
+        for (Sprite s : copy) {
             s.timePassed();
         }
     }

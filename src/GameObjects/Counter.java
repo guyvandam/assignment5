@@ -12,15 +12,15 @@ public class Counter {
     }
 
     // add number to current count.
-    void increase(int number){
+    public void increase(int number){
         counter+=number;
     }
     // subtract number from current count.
-    void decrease(int number){
+    public void decrease(int number){
         counter-=number;
     }
     // get current count.
-    int getValue(){
+    public int getValue(){
         return this.counter;
     }
 }
