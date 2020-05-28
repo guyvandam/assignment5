@@ -32,6 +32,11 @@ public class GameEnvironment {
         this.collidables.add(c);
     }
 
+    /**
+     * removes the input Collidable object from the GameEnvironment list of Collidables.
+     *
+     * @param c a Collidable object.
+     */
     public void removeCollidable(Collidable c) {
         this.collidables.remove(c);
     }
@@ -44,10 +49,12 @@ public class GameEnvironment {
     }
 
     /**
-     * a wrapper function for the getClosestCollision(GeometryShapes.Line trajectory, Interfaces.Collidable exception) function. the same function
+     * a wrapper function for the getClosestCollision(GeometryShapes.Line trajectory, Interfaces.Collidable exception)
+     * function. the same function
      * just without the exception Interfaces.Collidable. we want to check for all the items in the list.
      *
-     * @param trajectory a GeometryShapes.Line object. the future path of an object that might collide with Collidables in the list.
+     * @param trajectory a GeometryShapes.Line object. the future path of an object that might collide with Collidables
+     *                   in the list.
      * @return a CollisionInfo object. the closest collision or null if there isn't a collision at all.
      */
     public CollisionInfo getClosestCollision(Line trajectory) {
@@ -56,10 +63,12 @@ public class GameEnvironment {
 
     /**
      * Assume an object moving from trajectory.start() to trajectory.end(), if this object will not collide with any of
-     * the collidables in this collection (excluding the input Interfaces.Collidable - exception) , return null. Else, return the
+     * the collidables in this collection (excluding the input Interfaces.Collidable - exception) , return null. Else,
+     * return the
      * information about the closest collision that is going to occur.
      *
-     * @param trajectory a GeometryShapes.Line object. the future path of an object that might collide with Collidables in the list.
+     * @param trajectory a GeometryShapes.Line object. the future path of an object that might collide with Collidables
+     *                   in the list.
      * @param exception  a Interfaces.Collidable object. a Collision object we don't care for a collision with.
      * @return a CollisionInfo object. the closest collision or null if there isn't a collision at all.
      */

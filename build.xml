@@ -2,7 +2,7 @@
 
     <!-- Define a property, which is like a variable for the build file, -->
     <!--  with the classpath for all compilation & execution targets. -->
-    <property name="classpath" value="bin:biuoop-1.4.jar" />
+    <property name="classpath" value="bin:biuoop-1.4.jar"/>
 
     <!-- Compile all java files under `src`, and export .class files into `bin` -->
     <target name="compile">
@@ -14,10 +14,9 @@
         <delete dir="bin"/>
     </target>
 
-    <target name="run" depends="compile" >
+    <target name="run" depends="compile">
         <java classname="Ass5Game" classpath="${classpath}" fork="true"/>
     </target>
-
 
 
 </project>

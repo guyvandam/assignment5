@@ -126,7 +126,8 @@ public class Line {
      * finds the intersection point of 2 lines who are both on the same line equation.
      *
      * @param other a GeometryShapes.Line object.
-     * @return a GeometryShapes.Point object. the intersection point between our line and the input line if it exist. null otherwise.
+     * @return a GeometryShapes.Point object. the intersection point between our line and the input line if it exist.
+     * null otherwise.
      */
     public Point intersectionInEdges(Line other) {
         if (other == null) {
@@ -151,7 +152,8 @@ public class Line {
      * </p>
      *
      * @param other a GeometryShapes.Line object.
-     * @return a GeometryShapes.Point object. the intersection point between our line and the input line. or null if it doesn't exist.
+     * @return a GeometryShapes.Point object. the intersection point between our line and the input line. or null if it
+     * doesn't exist.
      */
     public Point intersectionWithVerticalLine(Line other) {
         if (other == null) {
@@ -271,8 +273,8 @@ public class Line {
     /**
      * returns the closest intersection with the input GeometryShapes.Rectangle to the start of the line.
      * <p>
-     * finds the 2 intersection points of the line with the input GeometryShapes.Rectangle. if there's just one intersection point
-     * returns it, otherwise finds the point with the minimum distance to the start of the line.
+     * finds the 2 intersection points of the line with the input GeometryShapes.Rectangle. if there's just one
+     * intersection point returns it, otherwise finds the point with the minimum distance to the start of the line.
      * </p>
      *
      * @param rect a GeometryShapes.Rectangle object.

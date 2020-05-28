@@ -10,11 +10,10 @@ import Interfaces.HitNotifier;
 import Interfaces.Sprite;
 import biuoop.DrawSurface;
 
-import java.awt.*;
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 
-//import GeometryShapes.*;
 
 /**
  * @author Guy Vandam 325133148 <guyvandam@gmail.com>
@@ -45,13 +44,13 @@ public class Block implements Collidable, Sprite, HitNotifier {
         return rect;
     }
 
+    /**
+     * @return a list of HitListener objects.
+     */
     public List<HitListener> getHitListeners() {
         return hitListeners;
     }
 
-    public void setHitListeners(List<HitListener> hitListeners) {
-        this.hitListeners = hitListeners;
-    }
 
     @Override
     public Rectangle getCollisionRectangle() {
@@ -111,6 +110,11 @@ public class Block implements Collidable, Sprite, HitNotifier {
         }
     }
 
+    /**
+     * removes the Block from the input Game by removing it from the Game's SpriteCollection and and.
+     *
+     * @param g a Game object.
+     */
     public void removeFromGame(Game g) {
         if (g != null) {
             g.removeCollidable(this);
@@ -131,10 +135,14 @@ public class Block implements Collidable, Sprite, HitNotifier {
         this.hitListeners.remove(hl);
     }
 
+    /**
+     * notifies all the hitListeners of the Block that a hit occurred, loops through a copy of the Block's list in case
+     * there will be change mid-loop.
+     *
+     * @param hitter a Ball object. the Ball hitting the Block.
+     */
     private void notifyHit(Ball hitter) {
-        // Make a copy of the hitListeners before iterating over them.
         List<HitListener> listeners = new ArrayList<>(this.getHitListeners());
-        // Notify all listeners about a hit event:
         for (HitListener hl : listeners) {
             hl.hitEvent(this, hitter);
         }

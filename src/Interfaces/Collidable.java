@@ -1,4 +1,5 @@
 package Interfaces;
+
 import GameObjects.Velocity;
 import GeometryShapes.Ball;
 import GeometryShapes.Point;
@@ -23,7 +24,9 @@ public interface Collidable {
      * The return is the new velocity expected after the hit based of the hit location on the object.
      *
      * @param collisionPoint  a GeometryShapes.Point object. the collision point.
-     * @param currentVelocity a GameObjects.Velocity object. the velocity of the object hitting our Interfaces.Collidable.
+     * @param currentVelocity a GameObjects.Velocity object. the velocity of the object hitting our Interfaces.
+     *                        Collidable.
+     * @param hitter          a Ball Object, the ball hitting the Collidable.
      * @return a GameObjects.Velocity object. the expected GameObjects.Velocity after the impact.
      */
 

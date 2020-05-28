@@ -31,6 +31,10 @@ public class SpriteCollection {
         this.sprites.add(s);
     }
 
+    /**
+     * removes the input Sprite from the list of Sprites.
+     * @param s a Sprite object.
+     */
     public void removeSprite(Sprite s) {
         this.sprites.remove(s);
     }

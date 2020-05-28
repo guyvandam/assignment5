@@ -1,33 +1,49 @@
 package GameObjects.ObjectRemovers;
 
 import GameObjects.Block;
+import GameObjects.Counter;
 import GameObjects.Game;
 import GeometryShapes.Ball;
 import Interfaces.HitListener;
-import GameObjects.Counter;
 
+/**
+ * @author Guy Vandam 325133148 <guyvandam@gmail.com>
+ * @version 1.0
+ * @since 2020-05-28.
+ */
 public class BlockRemover implements HitListener {
     private Game game;
     private Counter remainingBlocks;
 
+    /**
+     * constructor function.
+     *
+     * @param game            a Game object.
+     * @param remainingBlocks a Counter object.
+     */
     public BlockRemover(Game game, Counter remainingBlocks) {
-        this.game  = game;
+        this.game = game;
         this.remainingBlocks = remainingBlocks;
     }
 
+    /**
+     * @return a Game object.
+     */
     public Game getGame() {
-        return game;
+        return this.game;
     }
 
+    /**
+     *
+     * @return a Counter object, representing the number of remaining blocks in the game.
+     */
     public Counter getRemainingBlocks() {
-        return remainingBlocks;
+        return this.remainingBlocks;
     }
 
-    // Blocks that are hit should be removed
-    // from the game. Remember to remove this listener from the block
-    // that is being removed from the game.
+    @Override
     public void hitEvent(Block beingHit, Ball hitter) {
-        if(beingHit == null || hitter == null){
+        if (beingHit == null || hitter == null) {
             return;
         }
         beingHit.removeFromGame(this.getGame());

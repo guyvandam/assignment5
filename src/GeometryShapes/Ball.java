@@ -8,7 +8,7 @@ import Interfaces.Collidable;
 import Interfaces.Sprite;
 import biuoop.DrawSurface;
 
-import java.awt.*;
+import java.awt.Color;
 
 /**
  * @author Guy Vandam 325133148 <guyvandam@gmail.com>
@@ -243,8 +243,9 @@ public class Ball implements Sprite {
                     Point hitPoint = closestCollision.collisionPoint();
                     // as we said. the radios would be so small so moving it to the hit point minus the half of the
                     // velocity would mean "almost to the collision point" as required, as well as far enough for the
-                    // ball to 'escape' the hit Interfaces.Collidable. I tried other stuff like the ball's size or 2-3 pixels but
-                    // it didn't work, I stuck with this approach because I saw is works the best when i debugged.
+                    // ball to 'escape' the hit Interfaces.Collidable. I tried other stuff like the ball's size or 2-3
+                    // pixels but it didn't work, I stuck with this approach because I saw is works the best when I
+                    // debugged.
 
                     this.setCenter(new Point(hitPoint.getX() - this.getVelocity().getDx() / 2, hitPoint.getY()
                             - this.getVelocity().getDy() / 2));
@@ -266,6 +267,10 @@ public class Ball implements Sprite {
         }
     }
 
+    /**
+     * removes the ball from the input Game by removing it from the SpriteCollection.
+     * @param g a Game object.
+     */
     public void removeFromGame(Game g) {
         if (g != null) {
             g.removeSprite(this);

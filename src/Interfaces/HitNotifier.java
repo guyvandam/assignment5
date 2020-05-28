@@ -1,8 +1,22 @@
 package Interfaces;
 
+/**
+ * @author Guy Vandam 325133148 <guyvandam@gmail.com>
+ * @version 1.0
+ * @since 2020-05-28.
+ */
 public interface HitNotifier {
-    // Add hl as a listener to hit events.
+    /**
+     * Adds the input HitListener object hl, as a listener to hit events.
+     *
+     * @param hl a HitListener object.
+     */
     void addHitListener(HitListener hl);
-    // Remove hl from the list of listeners to hit events.
+
+    /**
+     * Removes the input HitListener hl, from the list of listeners to hit events.
+     *
+     * @param hl a HitListener object.
+     */
     void removeHitListener(HitListener hl);
 }
