@@ -1,18 +1,22 @@
-package GameObjects;
+package gameobjects;
 
-import GameObjects.ObjectRemovers.BallRemover;
-import GameObjects.ObjectRemovers.BlockRemover;
-import GeometryShapes.Ball;
-import GeometryShapes.Point;
-import GeometryShapes.Rectangle;
-import Interfaces.Collidable;
-import Interfaces.HitListener;
-import Interfaces.Sprite;
 import biuoop.DrawSurface;
 import biuoop.GUI;
 import biuoop.Sleeper;
+import gameobjects.hitlisteners.BallRemover;
+import gameobjects.hitlisteners.BlockRemover;
+import gameobjects.hitlisteners.ScoreTrackingListener;
+import gameobjects.sprites.Block;
+import gameobjects.sprites.Paddle;
+import gameobjects.sprites.ScoreIndicator;
+import geometryshapes.Ball;
+import geometryshapes.Point;
+import geometryshapes.Rectangle;
+import interfaces.Collidable;
+import interfaces.HitListener;
+import interfaces.Sprite;
 
-import java.awt.Color;
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -50,16 +54,6 @@ public class Game {
         this.currentScore = new Counter();
     }
 
-    /**
-     * main method. creates a new GameObjects.Game object, initializes everything and runs the game.
-     *
-     * @param args the command line arguments, we have no use for them in this main method.
-     */
-    public static void main(String[] args) {
-        Game game = new Game(800, 600);
-        game.initialize();
-        game.run();
-    }
 
     /**
      * @return an integer. the GUI width.
@@ -253,9 +247,9 @@ public class Game {
      * adds 2 balls to the game.
      */
     public void addBalls() {
-        int ballSize = 3, dx = 4, dy = 4, numOfBalls = 3;
+        int ballSize = 3, dx = 3, dy = 3, numOfBalls = 3;
         java.awt.Color ballColor = Color.BLACK;
-        Point startPoint = new Point(this.getWidthORHeight() * 4, this.getWidthORHeight() * 4);
+        Point startPoint = new Point(this.getWidthORHeight() * 6, (double) this.getGuiHeight() / 2);
 
         Ball[] balls = {new Ball(startPoint, ballSize, ballColor), new Ball(startPoint, ballSize, ballColor),
                 new Ball(startPoint, ballSize, ballColor)};

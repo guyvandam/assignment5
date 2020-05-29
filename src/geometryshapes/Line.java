@@ -1,4 +1,4 @@
-package GeometryShapes;
+package geometryshapes;
 
 /**
  * @author Guy Vandam 325133148 <guyvandam@gmail.com>

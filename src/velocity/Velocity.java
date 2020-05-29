@@ -1,6 +1,6 @@
-package GameObjects;
+package velocity;
 
-import GeometryShapes.Point;
+import geometryshapes.Point;
 
 /**
  * @author Guy Vandam 325133148 <guyvandam@gmail.com>

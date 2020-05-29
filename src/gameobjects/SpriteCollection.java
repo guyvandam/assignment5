@@ -1,6 +1,6 @@
-package GameObjects;
+package gameobjects;
 
-import Interfaces.Sprite;
+import interfaces.Sprite;
 import biuoop.DrawSurface;
 
 import java.util.ArrayList;

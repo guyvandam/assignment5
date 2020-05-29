@@ -1,4 +1,4 @@
-package GeometryShapes;
+package geometryshapes;
 
 import java.util.ArrayList;
 import java.util.List;

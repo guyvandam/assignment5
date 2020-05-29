@@ -1,6 +1,8 @@
-package GameObjects;
+package gameobjects.sprites;
 
-import Interfaces.Sprite;
+import gameobjects.Counter;
+import gameobjects.Game;
+import interfaces.Sprite;
 import biuoop.DrawSurface;
 
 import java.awt.Color;
@@ -47,7 +49,7 @@ public class ScoreIndicator implements Sprite {
      */
     @Override
     public void drawOn(DrawSurface d) {
-        String display = "Score: " + String.valueOf(this.getCurrentScore().getValue());
+        String display = "Score: " + this.getCurrentScore().getValue();
         int fontSize = 15, x = (int) this.getBlock().getRect().getWidth() / 2, y = fontSize;
         if (d != null) {
             this.getBlock().drawOn(d);

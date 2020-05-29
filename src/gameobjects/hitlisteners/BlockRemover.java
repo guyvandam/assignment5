@@ -1,10 +1,10 @@
-package GameObjects.ObjectRemovers;
+package gameobjects.hitlisteners;
 
-import GameObjects.Block;
-import GameObjects.Counter;
-import GameObjects.Game;
-import GeometryShapes.Ball;
-import Interfaces.HitListener;
+import gameobjects.sprites.Block;
+import gameobjects.Counter;
+import gameobjects.Game;
+import geometryshapes.Ball;
+import interfaces.HitListener;
 
 /**
  * @author Guy Vandam 325133148 <guyvandam@gmail.com>

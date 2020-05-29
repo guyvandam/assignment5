@@ -1,11 +1,11 @@
-package GeometryShapes;
+package geometryshapes;
 
-import GameObjects.CollisionInfo;
-import GameObjects.Game;
-import GameObjects.GameEnvironment;
-import GameObjects.Velocity;
-import Interfaces.Collidable;
-import Interfaces.Sprite;
+import gameobjects.CollisionInfo;
+import gameobjects.Game;
+import gameobjects.GameEnvironment;
+import velocity.Velocity;
+import interfaces.Collidable;
+import interfaces.Sprite;
 import biuoop.DrawSurface;
 
 import java.awt.Color;

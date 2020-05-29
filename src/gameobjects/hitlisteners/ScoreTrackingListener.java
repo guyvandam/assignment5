@@ -1,7 +1,9 @@
-package GameObjects;
+package gameobjects.hitlisteners;
 
-import GeometryShapes.Ball;
-import Interfaces.HitListener;
+import gameobjects.sprites.Block;
+import gameobjects.Counter;
+import geometryshapes.Ball;
+import interfaces.HitListener;
 
 /**
  * @author Guy Vandam 325133148 <guyvandam@gmail.com>

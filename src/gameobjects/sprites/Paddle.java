@@ -1,11 +1,15 @@
-package GameObjects;
+package gameobjects.sprites;
 
-import GeometryShapes.Ball;
-import GeometryShapes.Line;
-import GeometryShapes.Point;
-import GeometryShapes.Rectangle;
-import Interfaces.Collidable;
-import Interfaces.Sprite;
+import gameobjects.CollisionInfo;
+import gameobjects.Game;
+import gameobjects.GameEnvironment;
+import velocity.Velocity;
+import geometryshapes.Ball;
+import geometryshapes.Line;
+import geometryshapes.Point;
+import geometryshapes.Rectangle;
+import interfaces.Collidable;
+import interfaces.Sprite;
 import biuoop.DrawSurface;
 import biuoop.KeyboardSensor;
 

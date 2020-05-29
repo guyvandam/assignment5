@@ -1,9 +1,9 @@
-package GameObjects;
+package gameobjects;
 
-import GeometryShapes.Line;
-import GeometryShapes.Point;
-import GeometryShapes.Rectangle;
-import Interfaces.Collidable;
+import geometryshapes.Line;
+import geometryshapes.Point;
+import geometryshapes.Rectangle;
+import interfaces.Collidable;
 
 import java.util.ArrayList;
 import java.util.List;

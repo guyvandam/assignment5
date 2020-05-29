@@ -1,9 +1,9 @@
-package Interfaces;
+package interfaces;
 
-import GameObjects.Velocity;
-import GeometryShapes.Ball;
-import GeometryShapes.Point;
-import GeometryShapes.Rectangle;
+import velocity.Velocity;
+import geometryshapes.Ball;
+import geometryshapes.Point;
+import geometryshapes.Rectangle;
 
 /**
  * @author Guy Vandam 325133148 <guyvandam@gmail.com>

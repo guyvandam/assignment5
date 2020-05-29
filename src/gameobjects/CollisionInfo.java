@@ -1,7 +1,7 @@
-package GameObjects;
+package gameobjects;
 
-import GeometryShapes.Point;
-import Interfaces.Collidable;
+import geometryshapes.Point;
+import interfaces.Collidable;
 /**
  * @author Guy Vandam 325133148 <guyvandam@gmail.com>
  * @version 1.0

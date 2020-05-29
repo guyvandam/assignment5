@@ -1,4 +1,4 @@
-package Interfaces;
+package interfaces;
 
 /**
  * @author Guy Vandam 325133148 <guyvandam@gmail.com>

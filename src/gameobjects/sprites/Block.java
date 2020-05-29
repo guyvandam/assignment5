@@ -1,13 +1,15 @@
-package GameObjects;
+package gameobjects.sprites;
 
-import GeometryShapes.Ball;
-import GeometryShapes.Line;
-import GeometryShapes.Point;
-import GeometryShapes.Rectangle;
-import Interfaces.Collidable;
-import Interfaces.HitListener;
-import Interfaces.HitNotifier;
-import Interfaces.Sprite;
+import gameobjects.Game;
+import velocity.Velocity;
+import geometryshapes.Ball;
+import geometryshapes.Line;
+import geometryshapes.Point;
+import geometryshapes.Rectangle;
+import interfaces.Collidable;
+import interfaces.HitListener;
+import interfaces.HitNotifier;
+import interfaces.Sprite;
 import biuoop.DrawSurface;
 
 import java.awt.Color;

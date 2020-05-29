@@ -1,4 +1,4 @@
-package GameObjects;
+package gameobjects;
 
 /**
  * @author Guy Vandam 325133148 <guyvandam@gmail.com>
