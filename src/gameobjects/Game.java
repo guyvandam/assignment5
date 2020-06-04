@@ -16,7 +16,7 @@ import interfaces.Collidable;
 import interfaces.HitListener;
 import interfaces.Sprite;
 
-import java.awt.*;
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 
